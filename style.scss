@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.grid {
+  margin: 10% 10px; // TODO: remove 10px horizontal margin
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  background-color: lightblue;
+}
+
+.grid-item {
+  padding: 20px;
+}
+
+.image-row-top {
+  background-color: lightcoral;
+  grid-column: span 8;
+  margin-left: calc((100% + 10px) * -7);
+}
+
+.image-row-bottom {
+  background-color: lightseagreen;
+  grid-column: span 6;
+  margin-left: calc((100% + 10px) * -5);
+}
+
+.button-container {
+  background-color: green;
+  grid-column: 8 / span 1;
+  grid-row: 2;
+  height: 100%;
+}
