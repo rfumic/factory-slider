@@ -25,17 +25,38 @@ const imageRow1 = [
   image9,
 ];
 const imageRow2 = [...imageRow1].reverse();
-
 $(() => {
   //   $('.button-left, .button-right').attr('src', btnLBlue);
   $('.button-left').append($('<img>').attr('src', btnLGray));
+
   $('.button-right').append($('<img>').attr('src', btnRBlue));
   $.each(imageRow1, (i, src) => {
     let img = $('<img>').attr('src', src);
-    $('.row-top').append(img);
+    $('.top-image-container').append(img);
   });
+
   $.each(imageRow2, (i, src) => {
     let img = $('<img>').attr('src', src);
     $('.bottom-image-container').append(img);
+  });
+
+  let lastImg = $('.bottom-image-container img:first');
+  $('.button-right').on('click', () => {
+    let lastWidth = lastImg.width();
+    console.log(lastImg.attr('src'));
+    // $('.bottom-image-container img').css(
+    //   'transform',
+    //   `translateX(${lastWidth}px)`
+    // );
+    // $('.bottom-image-container img:first').css('display', 'none');
+    $('.bottom-image-container').append(
+      $('<img>').attr('src', lastImg.attr('src'))
+    );
+    lastImg.remove();
+    lastImg = $('.bottom-image-container img:first');
+
+    // $('.row-top img:first').before(lastImg);
+    // lastImg.remove();
+    // lastImg = $('.row-top img:last');
   });
 });
