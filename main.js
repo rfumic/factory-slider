@@ -26,10 +26,43 @@ const imageRow1 = [
 ];
 const imageRow2 = [...imageRow1].reverse();
 $(() => {
-  //   $('.button-left, .button-right').attr('src', btnLBlue);
+  // const hoverButton = (selector, src) => {
+  //   $(`${selector} img`).fadeOut(100, function () {
+  //     $(this).attr('src', src).fadeIn(100);
+  //   });
+  // };
   $('.button-left').append($('<img>').attr('src', btnLGray));
+  $('.button-left').hover(
+    () => {
+      $('.button-left img').fadeOut(100, function () {
+        $(this).attr('src', btnLBlue).fadeIn(100);
+      });
+    },
+    () => {
+      $('.button-left img').fadeOut(100, function () {
+        $(this).attr('src', btnLGray).fadeIn(100);
+      });
+    }
+  );
+  // $('.button-left').hover(
+  //   hoverButton('.button-left', btnLBlue),
+  //   hoverButton('.botton-left', btnLGray)
+  // );
 
-  $('.button-right').append($('<img>').attr('src', btnRBlue));
+  $('.button-right').append($('<img>').attr('src', btnRGray));
+  $('.button-right').hover(
+    () => {
+      $('.button-right img').fadeOut(100, function () {
+        $(this).attr('src', btnRBlue).fadeIn(100);
+      });
+    },
+    () => {
+      $('.button-right img').fadeOut(100, function () {
+        $(this).attr('src', btnRGray).fadeIn(100);
+      });
+    }
+  );
+
   $.each(imageRow1, (i, src) => {
     let img = $('<img>').attr('src', src);
     $('.row-top').append(img);
@@ -40,17 +73,25 @@ $(() => {
     $('.bottom-image-container').append(img);
   });
 
-  let lastImgBottom = $('.bottom-image-container img:first');
-  let lastImgTop = $('.row-top img:first');
   $('.button-right').on('click', () => {
+    let lastImgBottom = $('.bottom-image-container img:first');
+    let lastImgTop = $('.row-top img:first');
     $('.row-top').append($('<img>').attr('src', lastImgTop.attr('src')));
     $('.bottom-image-container').append(
       $('<img>').attr('src', lastImgBottom.attr('src'))
     );
     lastImgTop.remove();
-
     lastImgBottom.remove();
-    lastImgTop = $('.row-top img:first');
-    lastImgBottom = $('.bottom-image-container img:first');
+  });
+
+  $('.button-left').on('click', () => {
+    let firstImageTop = $('.row-top img:last');
+    let firstImageBottom = $('.bottom-image-container img:last');
+    $('.row-top').prepend($('<img>').attr('src', firstImageTop.attr('src')));
+    $('.bottom-image-container').prepend(
+      $('<img>').attr('src', firstImageBottom.attr('src'))
+    );
+    firstImageTop.remove();
+    firstImageBottom.remove();
   });
 });

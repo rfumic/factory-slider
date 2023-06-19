@@ -63,10 +63,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid #dddddd;
+  transition: 200ms ease-in-out;
   img {
     // border: 1px solid red;
     margin-left: 10px;
   }
+}
+.button:hover {
+  border: 2px solid #134880;
 }
 .button-right {
   margin-top: 10px;
