@@ -24,12 +24,8 @@
 .row-top {
   background-color: lightcoral;
   height: 50%;
-  .top-image-container {
-    background-color: blue;
-    max-height: 100%;
-    display: flex;
-    flex-flow: row-reverse;
-  }
+  display: flex;
+  flex-flow: row-reverse;
   img {
     margin: 10px 0;
     margin-right: 10px;
