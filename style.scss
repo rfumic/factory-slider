@@ -15,10 +15,12 @@
 .section-left {
   background-color: pink;
   width: 75%;
+  z-index: 0;
 }
 .section-right {
   background-color: purple;
   width: 25%;
+  z-index: 1;
 }
 
 .row-top {
@@ -29,7 +31,12 @@
   img {
     margin: 10px 0;
     margin-right: 10px;
+    transition: width 0.15s linear;
   }
+}
+.shrink {
+  width: 0px !important;
+  transition-delay: 10ms;
 }
 
 .row-bottom {
@@ -47,6 +54,7 @@
   img {
     margin: 0 0;
     margin-right: 10px;
+    transition: width 0.15s linear;
   }
 }
 

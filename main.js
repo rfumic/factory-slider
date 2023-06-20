@@ -76,12 +76,23 @@ $(() => {
   $('.button-right').on('click', () => {
     let lastImgBottom = $('.bottom-image-container img:first');
     let lastImgTop = $('.row-top img:first');
-    $('.row-top').append($('<img>').attr('src', lastImgTop.attr('src')));
-    $('.bottom-image-container').append(
-      $('<img>').attr('src', lastImgBottom.attr('src'))
-    );
-    lastImgTop.remove();
-    lastImgBottom.remove();
+    lastImgTop.css('width', lastImgTop.width());
+    lastImgBottom.css('width', lastImgBottom.width());
+
+    setTimeout(() => {
+      $('.row-top img:first').addClass('shrink');
+      $('.bottom-image-container img:first').addClass('shrink');
+    }, 50);
+
+    setTimeout(() => {
+      $('.bottom-image-container').append(
+        $('<img>').attr('src', lastImgBottom.attr('src'))
+      );
+      lastImgBottom.remove();
+
+      $('.row-top').append($('<img>').attr('src', lastImgTop.attr('src')));
+      lastImgTop.remove();
+    }, 200);
   });
 
   $('.button-left').on('click', () => {
