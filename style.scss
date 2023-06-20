@@ -1,11 +1,14 @@
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
 }
+
 .container {
-  margin: 10% 10px; // TODO: remove 10px horizontal margin
-  background-color: red;
+  margin: 10% 0px;
   padding: 20px;
   width: 1500px;
   display: flex;
@@ -13,34 +16,49 @@
 }
 
 .section-left {
-  background-color: pink;
   width: 75%;
   z-index: 0;
 }
+
 .section-right {
-  background-color: purple;
   width: 25%;
   z-index: 1;
+  h1 {
+    font-size: xx-large;
+    color: #134880;
+    padding: 10px;
+  }
+  p {
+    font-size: x-large;
+    padding: 10px;
+    color: #47494c;
+  }
+}
+
+img {
+  border-radius: 5px;
 }
 
 .row-top {
-  background-color: lightcoral;
   height: 50%;
   display: flex;
   flex-flow: row-reverse;
   img {
     margin: 10px 0;
-    margin-right: 10px;
-    transition: width 0.15s linear;
+    margin-right: 10px !important;
+    transition: width 0.15s linear, margin-right 0.15s linear;
+  }
+  img:first-of-type {
+    margin-right: 0 !important;
   }
 }
+
 .shrink {
   width: 0px !important;
   transition-delay: 10ms;
 }
 
 .row-bottom {
-  background-color: lightseagreen;
   display: flex;
   height: 50%;
   justify-content: space-between;
@@ -49,21 +67,22 @@
     flex-flow: row-reverse;
     max-height: 100%;
     width: 85%;
-    background-color: orange;
-  }
-  img {
-    margin: 0 0;
-    margin-right: 10px;
-    transition: width 0.15s linear;
+    img {
+      margin: 0 0;
+      margin-right: 10px;
+      transition: width 0.15s linear, margin-right 0.15s linear;
+    }
+    img:first-of-type {
+      margin-right: 0 !important;
+    }
   }
 }
 
 .button-container {
-  background-color: green;
   width: 5%;
 }
+
 .button {
-  background-color: gray;
   cursor: pointer;
   height: 56px;
   border-radius: 5px;
@@ -73,20 +92,20 @@
   justify-content: center;
   border: 2px solid #dddddd;
   transition: 200ms ease-in-out;
-  img {
-    // border: 1px solid red;
-    margin-left: 10px;
-  }
 }
+
 .button:hover {
   border: 2px solid #134880;
 }
+
 .button-right {
   margin-top: 10px;
 }
+
 .button-enabled {
   border: 2px solid #134880;
 }
+
 .button-disabled {
   border: 2px solid #dddddd;
 }

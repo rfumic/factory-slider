@@ -25,106 +25,109 @@ const imageRow1 = [
   image9,
 ];
 const imageRow2 = [...imageRow1].reverse();
+
 $(() => {
-  // const hoverButton = (selector, src) => {
-  //   $(`${selector} img`).fadeOut(100, function () {
-  //     $(this).attr('src', src).fadeIn(100);
-  //   });
-  // };
+  // loading button images
+  const hoverButton = (selector, src) => {
+    $(`${selector} img`).fadeOut(100, function () {
+      $(this).attr('src', src).fadeIn(100);
+    });
+  };
+
   $('.button-left').append($('<img>').attr('src', btnLGray));
   $('.button-left').hover(
     () => {
-      $('.button-left img').fadeOut(100, function () {
-        $(this).attr('src', btnLBlue).fadeIn(100);
-      });
+      hoverButton('.button-left', btnLBlue);
     },
     () => {
-      $('.button-left img').fadeOut(100, function () {
-        $(this).attr('src', btnLGray).fadeIn(100);
-      });
+      hoverButton('.button-left', btnLGray);
     }
   );
-  // $('.button-left').hover(
-  //   hoverButton('.button-left', btnLBlue),
-  //   hoverButton('.botton-left', btnLGray)
-  // );
 
   $('.button-right').append($('<img>').attr('src', btnRGray));
   $('.button-right').hover(
     () => {
-      $('.button-right img').fadeOut(100, function () {
-        $(this).attr('src', btnRBlue).fadeIn(100);
-      });
+      hoverButton('.button-right', btnRBlue);
     },
     () => {
-      $('.button-right img').fadeOut(100, function () {
-        $(this).attr('src', btnRGray).fadeIn(100);
-      });
+      hoverButton('.button-right', btnRGray);
     }
   );
 
+  // attaching images to DOM
   $.each(imageRow1, (i, src) => {
-    let img = $('<img>').attr('src', src);
-    $('.row-top').append(img);
+    $('.row-top').append($('<img>').attr('src', src));
   });
 
   $.each(imageRow2, (i, src) => {
-    let img = $('<img>').attr('src', src);
-    $('.bottom-image-container').append(img);
+    $('.bottom-image-container').append($('<img>').attr('src', src));
   });
 
+  let sliderActive = false;
+
+  // slide right
   $('.button-right').on('click', () => {
-    let lastImgBottom = $('.bottom-image-container img:first');
-    let lastImgTop = $('.row-top img:first');
-    lastImgTop.css('width', lastImgTop.width());
-    lastImgBottom.css('width', lastImgBottom.width());
+    if (!sliderActive) {
+      sliderActive = true;
+      let lastImageBottom = $('.bottom-image-container img:first');
+      let lastImageTop = $('.row-top img:first');
+      lastImageTop.css('width', lastImageTop.width());
+      lastImageBottom.css('width', lastImageBottom.width());
 
-    setTimeout(() => {
-      lastImgTop.addClass('shrink');
-      lastImgBottom.addClass('shrink');
-    }, 50);
+      setTimeout(() => {
+        lastImageTop.addClass('shrink');
+        lastImageBottom.addClass('shrink');
+      }, 50);
 
-    setTimeout(() => {
-      $('.bottom-image-container').append(
-        $('<img>').attr('src', lastImgBottom.attr('src'))
-      );
-      lastImgBottom.remove();
+      setTimeout(() => {
+        $('.bottom-image-container').append(
+          $('<img>').attr('src', lastImageBottom.attr('src'))
+        );
+        lastImageBottom.remove();
 
-      $('.row-top').append($('<img>').attr('src', lastImgTop.attr('src')));
-      lastImgTop.remove();
-    }, 200);
+        $('.row-top').append($('<img>').attr('src', lastImageTop.attr('src')));
+        lastImageTop.remove();
+        sliderActive = false;
+      }, 200);
+    }
   });
 
+  // slide left
   $('.button-left').on('click', () => {
-    let firstImageTop = $('.row-top img:last');
-    let firstImageBottom = $('.bottom-image-container img:last');
-    const bottomWidth = firstImageBottom.width();
-    const topWidth = firstImageTop.width();
+    if (!sliderActive) {
+      sliderActive = true;
+      let firstImageTop = $('.row-top img:last');
+      let firstImageBottom = $('.bottom-image-container img:last');
+      const bottomWidth = firstImageBottom.width();
+      const topWidth = firstImageTop.width();
 
-    setTimeout(() => {
-      $('.bottom-image-container').prepend(
-        $('<img>').attr('src', firstImageBottom.attr('src'))
-      );
-      $('.bottom-image-container img:first').css({ width: 0, marginRight: 0 });
+      setTimeout(() => {
+        $('.bottom-image-container').prepend(
+          $('<img>').attr('src', firstImageBottom.attr('src'))
+        );
+        $('.bottom-image-container img:first').css({
+          width: 0,
+        });
 
-      $('.row-top').prepend($('<img>').attr('src', firstImageTop.attr('src')));
-      $('.row-top img:first').css({
-        width: 0,
-        marginRight: 0,
-      });
-    }, 50);
+        $('.row-top').prepend(
+          $('<img>').attr('src', firstImageTop.attr('src'))
+        );
+        $('.row-top img:first').css({
+          width: 0,
+        });
+      }, 50);
 
-    setTimeout(() => {
-      $('.bottom-image-container img:first').css({
-        width: bottomWidth,
-        marginRight: '10px',
-      });
-      firstImageBottom.remove();
-      $('.row-top img:first').css({
-        width: topWidth,
-        marginRight: '10px',
-      });
-      firstImageTop.remove();
-    }, 150);
+      setTimeout(() => {
+        $('.bottom-image-container img:first').css({
+          width: bottomWidth,
+        });
+        firstImageBottom.remove();
+        $('.row-top img:first').css({
+          width: topWidth,
+        });
+        firstImageTop.remove();
+        sliderActive = false;
+      }, 150);
+    }
   });
 });
