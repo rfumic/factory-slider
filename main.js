@@ -80,8 +80,8 @@ $(() => {
     lastImgBottom.css('width', lastImgBottom.width());
 
     setTimeout(() => {
-      $('.row-top img:first').addClass('shrink');
-      $('.bottom-image-container img:first').addClass('shrink');
+      lastImgTop.addClass('shrink');
+      lastImgBottom.addClass('shrink');
     }, 50);
 
     setTimeout(() => {
@@ -98,11 +98,33 @@ $(() => {
   $('.button-left').on('click', () => {
     let firstImageTop = $('.row-top img:last');
     let firstImageBottom = $('.bottom-image-container img:last');
-    $('.row-top').prepend($('<img>').attr('src', firstImageTop.attr('src')));
-    $('.bottom-image-container').prepend(
-      $('<img>').attr('src', firstImageBottom.attr('src'))
-    );
-    firstImageTop.remove();
-    firstImageBottom.remove();
+    const bottomWidth = firstImageBottom.width();
+    const topWidth = firstImageTop.width();
+
+    setTimeout(() => {
+      $('.bottom-image-container').prepend(
+        $('<img>').attr('src', firstImageBottom.attr('src'))
+      );
+      $('.bottom-image-container img:first').css({ width: 0, marginRight: 0 });
+
+      $('.row-top').prepend($('<img>').attr('src', firstImageTop.attr('src')));
+      $('.row-top img:first').css({
+        width: 0,
+        marginRight: 0,
+      });
+    }, 50);
+
+    setTimeout(() => {
+      $('.bottom-image-container img:first').css({
+        width: bottomWidth,
+        marginRight: '10px',
+      });
+      firstImageBottom.remove();
+      $('.row-top img:first').css({
+        width: topWidth,
+        marginRight: '10px',
+      });
+      firstImageTop.remove();
+    }, 150);
   });
 });
