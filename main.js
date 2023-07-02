@@ -7,8 +7,8 @@ import btnRGray from './assets/arrow-gray-right.png';
 $(() => {
   // loading button images
   const hoverButton = (selector, src) => {
-    $(`${selector} img`).fadeOut(100, function () {
-      $(this).attr('src', src).fadeIn(100);
+    $(`${selector} img`).fadeOut(50, function () {
+      $(this).attr('src', src).fadeIn(50);
     });
   };
 

@@ -124,20 +124,26 @@ img {
   // background-color: green;
 }
 
-.button {
+button {
+  background: none;
+  color: inherit;
+  padding: 0;
+  outline: inherit;
   cursor: pointer;
-  height: 56px;
+  height: 60px;
+  width: 60px;
+  // background-color: red;
   border-radius: 5px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #dddddd;
+  border: 1px solid #dddddd;
   transition: 200ms ease-in-out;
 }
 
-.button:hover {
-  border: 2px solid #134880;
+button:hover {
+  border: 1px solid #134880;
 }
 
 .button-right {
