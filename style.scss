@@ -1,36 +1,69 @@
-@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+// @import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url(assets/fonts/SourceSansPro-Regular.ttf);
+}
+@font-face {
+  font-family: 'SourceSansPro-Bold';
+  src: url(assets/fonts/SourceSansPro-Bold.ttf);
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'SourceSansPro-Regular', sans-serif;
 }
 
 .container {
-  margin: 10% 0px;
-  padding: 20px;
-  width: 1500px;
+  margin: 0px auto;
+  // padding: 20px;
+  // width: 1500px;
+  max-width: 940px;
+  height: 730px;
   display: flex;
-  max-height: 500px;
+  // max-height: 500px;
+  flex-direction: column;
 }
-
+header,
+footer {
+  height: 100px;
+  // margin: 0 auto;
+  // padding: 0;
+  background: #dddddd;
+}
+.slider-container {
+  display: flex;
+  height: 500px;
+  margin: 60px 0;
+}
 .section-left {
-  width: 75%;
+  // background-color: red;
+  // width: 75%;
+  width: 620px;
   z-index: 0;
 }
 
 .section-right {
-  width: 25%;
+  // background-color: blue;
+  // width: 25%;
+  width: 300px;
+  margin-left: 20px;
+  padding-top: 5px;
   z-index: 1;
   h1 {
-    font-size: xx-large;
+    font-family: 'SourceSansPro-Bold';
+    font-size: 30px;
+    line-height: 37.5px;
     color: #134880;
-    padding: 10px;
+    padding-bottom: 10px;
+    // padding: 10px;
   }
-  p {
-    font-size: x-large;
-    padding: 10px;
+  h2 {
+    font-size: 18px;
+    line-height: 26px;
+    // padding: 10px;
     color: #47494c;
   }
 }
@@ -40,11 +73,13 @@ img {
 }
 
 .row-top {
-  height: 50%;
+  // height: 50%;
+  height: 200px;
   display: flex;
   flex-flow: row-reverse;
+  margin-top: 10px;
   img {
-    margin: 10px 0;
+    // margin: 10px 0;
     margin-right: 10px !important;
     transition: width 0.15s linear, margin-right 0.15s linear;
   }
@@ -60,13 +95,17 @@ img {
 
 .row-bottom {
   display: flex;
-  height: 50%;
+  margin-top: 10px;
+  // background-color: orange;
+  // height: 50%;
+  height: 200px;
   justify-content: space-between;
   .bottom-image-container {
     display: flex;
     flex-flow: row-reverse;
-    max-height: 100%;
-    width: 85%;
+    // max-height: 100%;
+    // width: 85%;
+    width: 460px;
     img {
       margin: 0 0;
       margin-right: 10px;
@@ -79,7 +118,10 @@ img {
 }
 
 .button-container {
-  width: 5%;
+  // width: 5%;
+  width: 60px;
+  margin-left: 20px;
+  // background-color: green;
 }
 
 .button {
