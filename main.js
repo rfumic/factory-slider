@@ -6,29 +6,33 @@ import btnRGray from './assets/arrow-gray-right.png';
 
 $(() => {
   // loading button images
-  const hoverButton = (selector, src) => {
-    $(`${selector} img`).fadeOut(50, function () {
-      $(this).attr('src', src).fadeIn(50);
-    });
+  const hoverButton = (selector, src, opacity = '100%') => {
+    // $(`${selector} img`).fadeOut(500, function () {
+    // $(this).attr('src', src).fadeIn(500);
+    // });
+    $(`${selector} img`)
+      .animate({ opacity: opacity }, 200)
+      .attr('src', src)
+      .animate({ opacity: '100%' }, 200);
   };
 
-  $('.button-left').append($('<img>').attr('src', btnLGray));
+  $('.button-left').append($('<img>').attr('src', btnLBlue));
   $('.button-left').hover(
     () => {
-      hoverButton('.button-left', btnLBlue);
+      hoverButton('.button-left', btnLGray, '75%');
     },
     () => {
-      hoverButton('.button-left', btnLGray);
+      hoverButton('.button-left', btnLBlue);
     }
   );
 
-  $('.button-right').append($('<img>').attr('src', btnRGray));
+  $('.button-right').append($('<img>').attr('src', btnRBlue));
   $('.button-right').hover(
     () => {
-      hoverButton('.button-right', btnRBlue);
+      hoverButton('.button-right', btnRGray, '75%');
     },
     () => {
-      hoverButton('.button-right', btnRGray);
+      hoverButton('.button-right', btnRBlue);
     }
   );
 
@@ -76,6 +80,7 @@ $(() => {
         );
         $('.bottom-image-container img:first').css({
           width: 0,
+          opacity: '0%',
         });
 
         $('.row-top').prepend(
@@ -83,17 +88,33 @@ $(() => {
         );
         $('.row-top img:first').css({
           width: 0,
+          opacity: '0%',
         });
       }, 50);
 
       setTimeout(() => {
-        $('.bottom-image-container img:first').css({
-          width: bottomWidth,
-        });
+        $('.bottom-image-container img:first')
+          .css({
+            width: bottomWidth,
+            // opacity: 100,
+          })
+          .animate(
+            {
+              opacity: '100%',
+            },
+            1000
+          );
         firstImageBottom.remove();
-        $('.row-top img:first').css({
-          width: topWidth,
-        });
+        $('.row-top img:first')
+          .css({
+            width: topWidth,
+          })
+          .animate(
+            {
+              opacity: '100%',
+            },
+            1000
+          );
         firstImageTop.remove();
         sliderActive = false;
       }, 150);

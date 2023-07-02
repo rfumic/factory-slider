@@ -138,12 +138,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #dddddd;
   transition: 200ms ease-in-out;
+  border: 1px solid #134880;
 }
 
 button:hover {
-  border: 1px solid #134880;
+  border: 1px solid #dddddd;
 }
 
 .button-right {
