@@ -7,9 +7,6 @@ import btnRGray from './assets/arrow-gray-right.png';
 $(() => {
   // loading button images
   const hoverButton = (selector, src, opacity = '100%') => {
-    // $(`${selector} img`).fadeOut(500, function () {
-    // $(this).attr('src', src).fadeIn(500);
-    // });
     $(`${selector} img`)
       .animate({ opacity: opacity }, 200)
       .attr('src', src)
@@ -96,7 +93,6 @@ $(() => {
         $('.bottom-image-container img:first')
           .css({
             width: bottomWidth,
-            // opacity: 100,
           })
           .animate(
             {
